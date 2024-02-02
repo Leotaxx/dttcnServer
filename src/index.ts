@@ -10,8 +10,9 @@ const app = express();
 
 const port = process.env.PORT||8080;
 const corsOptions = {
-  credentials: true,
-  origin: ['http://localhost:3000', 'https://fastidious-concha-c6b855.netlify.app','https://dttcn.netlify.app']
+  origin: 'https://fastidious-concha-c6b855.netlify.app', // or '*' for allowing any origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed request methods
+  allowedHeaders: ['Content-Type', 'Authorization'] // Allowed request headers
 };
 
 app.use(cors(corsOptions));
