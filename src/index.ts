@@ -7,11 +7,11 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import router from './router';
 const app = express();
-const path = require('path');
+
 const port = process.env.PORT||8080;
 const corsOptions = {
   credentials: true,
-  origin: ['http://localhost:3000', 'https://fastidious-concha-c6b855.netlify.app']
+  origin: ['http://localhost:3000', 'https://fastidious-concha-c6b855.netlify.app','https://dttcn.netlify.app']
 };
 
 app.use(cors(corsOptions));
@@ -42,4 +42,3 @@ server.listen(port,()=>{
 });
 
 
-app.use('/', router());
