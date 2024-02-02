@@ -11,7 +11,7 @@ const path = require('path');
 const port = process.env.PORT||8080;
 const corsOptions = {
   credentials: true,
-  origin: ['http://localhost:3000', 'https://montblanc.azurewebsites.net']
+  origin: ['http://localhost:3000', 'https://fastidious-concha-c6b855.netlify.app']
 };
 
 app.use(cors(corsOptions));
@@ -28,13 +28,13 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
 mongoose.connection.on('error',(error:Error)=> console.log(error)); 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, '../../client/build')));
+// app.use(express.static(path.join(__dirname, '../../client/build')));
 
-// The "catchall" handler: for any request that doesn't
-// match one above, send back the client's index.html file.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../client/build/index.html'));
-});
+// // The "catchall" handler: for any request that doesn't
+// // match one above, send back the client's index.html file.
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../../client/build/index.html'));
+// });
 const server = http.createServer(app);
 
 server.listen(port,()=>{
@@ -42,3 +42,4 @@ server.listen(port,()=>{
 });
 
 
+app.use('/', router());
